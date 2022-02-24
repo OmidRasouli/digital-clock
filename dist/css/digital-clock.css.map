@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "../../scss/digital-clock.scss"
+    ],
+    "names": [],
+    "file": "digital-clock.css"
+}
