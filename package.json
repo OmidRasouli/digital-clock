@@ -1,0 +1,22 @@
+{
+  "name": "digital-clock",
+  "version": "1.0.0",
+  "description": "This is a digital clock without any images (just CSS and JS) # digital-clock",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OmidRasouli/digital-clock.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OmidRasouli/digital-clock/issues"
+  },
+  "homepage": "https://github.com/OmidRasouli/digital-clock#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1"
+  }
+}
