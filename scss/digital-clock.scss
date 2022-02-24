@@ -1,125 +1,124 @@
 body {
-    background-color: #1d1e22;
+  background-color: #1d1e22;
+}
+
+$lineWidth: 5px;
+$lineHeight: 12px;
+$color: #f00;
+@mixin line($vertical: true) {
+  opacity: 0.2;
+  position: relative;
+  @if $vertical {
+    width: $lineWidth;
+    height: $lineHeight;
+  } @else {
+    width: $lineHeight;
+    height: $lineWidth;
   }
-  
-  $lineWidth: 5px;
-  $lineHeight: 12px;
-  $color: #f00;
-  @mixin line($vertical: true) {
-    opacity: 0.2;
-    position: relative;
-    @if $vertical {
-      width: $lineWidth;
-      height: $lineHeight;
+  background-color: $color;
+}
+
+@mixin triangle($vertical: true, $turn: false) {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+
+  $halfWidth: ($lineWidth * 0.5);
+  @if $vertical {
+    @if $turn {
+      border-top: $halfWidth solid $color;
+      bottom: -$halfWidth;
     } @else {
-      width: $lineHeight;
-      height: $lineWidth;
+      border-bottom: $halfWidth solid $color;
+      top: -$halfWidth;
     }
-    background-color: $color;
-  }
-  
-  @mixin triangle($vertical: true, $turn: false) {
-    content: "";
-    width: 0;
-    height: 0;
-    position: absolute;
-  
-    $halfWidth: ($lineWidth * 0.5);
-    @if $vertical {
-      @if $turn {
-        border-top: $halfWidth solid $color;
-        bottom: -$halfWidth;
-      } @else {
-        border-bottom: $halfWidth solid $color;
-        top: -$halfWidth;
-      }
-      border-left: $halfWidth solid transparent;
-      border-right: $halfWidth solid transparent;
+    border-left: $halfWidth solid transparent;
+    border-right: $halfWidth solid transparent;
+  } @else {
+    @if $turn {
+      border-left: $halfWidth solid $color;
+      right: -$halfWidth;
     } @else {
-      @if $turn {
-        border-left: $halfWidth solid $color;
-        right: -$halfWidth;
-      } @else {
-        border-right: $halfWidth solid $color;
-        left: -$halfWidth;
-      }
-      border-bottom: $halfWidth solid transparent;
-      border-top: $halfWidth solid transparent;
+      border-right: $halfWidth solid $color;
+      left: -$halfWidth;
     }
+    border-bottom: $halfWidth solid transparent;
+    border-top: $halfWidth solid transparent;
   }
-  .timer {
-    display: inline-grid;
-    gap: 10px;
+}
+.timer {
+  display: inline-grid;
+  gap: 10px;
+  grid-auto-flow: column;
+
+  .number {
+    width: ($lineWidth * 3) + + $lineHeight;
+    display: grid;
+    grid-template-columns: $lineWidth $lineHeight $lineWidth;
     grid-auto-flow: column;
-  
-    .number {
-      width: ($lineWidth * 3) + + $lineHeight;
+    gap: $lineWidth * 0.5;
+    align-items: center;
+
+    .columns {
       display: grid;
-      grid-template-columns: $lineWidth $lineHeight $lineWidth;
-      grid-auto-flow: column;
-      gap: $lineWidth * 0.5;
-      align-items: center;
-  
-      .columns {
-        display: grid;
-        gap: $lineWidth;
-        align-content: space-between;
-  
-        &.center-coloumn {
-          height: ($lineHeight * 2) + ($lineWidth * 3);
+      gap: $lineWidth;
+      align-content: space-between;
+
+      &.center-coloumn {
+        height: ($lineHeight * 2) + ($lineWidth * 3);
+      }
+
+      .line-1 {
+        @include line;
+        &::after {
+          @include triangle;
         }
-  
-        .line-1 {
-          @include line;
-          &::after {
-            @include triangle;
-          }
-          &::before {
-            @include triangle(true, true);
-          }
-        }
-  
-        .line-2 {
-          @include line(false);
-          &::after {
-            @include triangle(false);
-          }
-          &::before {
-            @include triangle(false, true);
-          }
-        }
-  
-        .show-number {
-          opacity: 1;
+        &::before {
+          @include triangle(true, true);
         }
       }
-    }
-    .dot {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      opacity: 0.2;
-      animation: blink 1s infinite steps(2, jump-none);
-  
-      &::before {
-        background-color: $color;
-        width: $lineWidth;
-        height: $lineWidth;
-        content: "";
+
+      .line-2 {
+        @include line(false);
+        &::after {
+          @include triangle(false);
+        }
+        &::before {
+          @include triangle(false, true);
+        }
       }
-      &::after {
-        background-color: $color;
-        width: $lineWidth;
-        height: $lineWidth;
-        content: "";
+
+      .show-number {
+        opacity: 1;
       }
     }
   }
-  
-  @keyframes blink {
-    to {
-      opacity: 1;
+  .dot {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    opacity: 0.2;
+    animation: blink 1s infinite steps(2, jump-none);
+
+    &::before {
+      background-color: $color;
+      width: $lineWidth;
+      height: $lineWidth;
+      content: "";
+    }
+    &::after {
+      background-color: $color;
+      width: $lineWidth;
+      height: $lineWidth;
+      content: "";
     }
   }
-  
+}
+
+@keyframes blink {
+  to {
+    opacity: 1;
+  }
+}
