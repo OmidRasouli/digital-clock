@@ -28,7 +28,7 @@ function reset(list) {
 }
 
 //Timer function (this is obvious :D)
-function Timer(time) {
+function timer(time) {
   //If the time is zero it shows 00:00
   if (time < 0) return;
 
