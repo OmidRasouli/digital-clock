@@ -1,0 +1,142 @@
+body {
+  background-color: #1d1e22;
+}
+
+.timer {
+  display: -ms-inline-grid;
+  display: inline-grid;
+  gap: 10px;
+  grid-auto-flow: column;
+}
+
+.timer .number {
+  width: 27px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5px 12px 5px;
+      grid-template-columns: 5px 12px 5px;
+  grid-auto-flow: column;
+  gap: 2.5px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.timer .number .columns {
+  display: -ms-grid;
+  display: grid;
+  gap: 5px;
+  -ms-flex-line-pack: justify;
+      align-content: space-between;
+}
+
+.timer .number .columns.center-coloumn {
+  height: 39px;
+}
+
+.timer .number .columns .line-1 {
+  opacity: 0.2;
+  position: relative;
+  width: 5px;
+  height: 12px;
+  background-color: #f00;
+}
+
+.timer .number .columns .line-1::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-bottom: 2.5px solid #f00;
+  top: -2.5px;
+  border-left: 2.5px solid transparent;
+  border-right: 2.5px solid transparent;
+}
+
+.timer .number .columns .line-1::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-top: 2.5px solid #f00;
+  bottom: -2.5px;
+  border-left: 2.5px solid transparent;
+  border-right: 2.5px solid transparent;
+}
+
+.timer .number .columns .line-2 {
+  opacity: 0.2;
+  position: relative;
+  width: 12px;
+  height: 5px;
+  background-color: #f00;
+}
+
+.timer .number .columns .line-2::after {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-right: 2.5px solid #f00;
+  left: -2.5px;
+  border-bottom: 2.5px solid transparent;
+  border-top: 2.5px solid transparent;
+}
+
+.timer .number .columns .line-2::before {
+  content: "";
+  width: 0;
+  height: 0;
+  position: absolute;
+  border-left: 2.5px solid #f00;
+  right: -2.5px;
+  border-bottom: 2.5px solid transparent;
+  border-top: 2.5px solid transparent;
+}
+
+.timer .number .columns .show-number {
+  opacity: 1;
+}
+
+.timer .dot {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  opacity: 0.2;
+  -webkit-animation: blink 1s infinite steps(2, jump-none);
+          animation: blink 1s infinite steps(2, jump-none);
+}
+
+.timer .dot::before {
+  background-color: #f00;
+  width: 5px;
+  height: 5px;
+  content: "";
+}
+
+.timer .dot::after {
+  background-color: #f00;
+  width: 5px;
+  height: 5px;
+  content: "";
+}
+
+@-webkit-keyframes blink {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes blink {
+  to {
+    opacity: 1;
+  }
+}
+/*# sourceMappingURL=digital-clock.css.map */
