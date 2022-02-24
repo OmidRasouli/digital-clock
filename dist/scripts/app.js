@@ -73,7 +73,7 @@ function timer(time) {
 
   //Call this function after 1s
   setTimeout(function () {
-    Timer(time - 1);
+    timer(time - 1);
   }, 1000);
 }
 
