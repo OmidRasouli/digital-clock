@@ -78,4 +78,4 @@ function timer(time) {
 }
 
 //Calling timer with 680s - It must be shown 11:20
-Timer(680);
+timer(680);
