@@ -27,25 +27,25 @@ function Timer(time) {
 
   let minutes = time / 60;
   let seconds = time % 60;
-  let minutesTen = Math.trunc(minutes / 10);
-  let minutesOne = Math.trunc(minutes % 10);
-  let secondsTen = Math.trunc(seconds / 10);
-  let secondsOne = Math.trunc(seconds % 10);
+  let minutesTens = Math.trunc(minutes / 10);
+  let minutesOnes = Math.trunc(minutes % 10);
+  let secondsTens = Math.trunc(seconds / 10);
+  let secondsOnes = Math.trunc(seconds % 10);
 
   reset(minutesLines[0]);
   reset(minutesLines[1]);
   reset(secondsLines[0]);
   reset(secondsLines[1]);
-  numberPatterns[minutesTen].forEach((x) =>
+  numberPatterns[minutesTens].forEach((x) =>
     minutesLines[0][x - 1].classList.add("show-number")
   );
-  numberPatterns[minutesOne].forEach((x) =>
+  numberPatterns[minutesOnes].forEach((x) =>
     minutesLines[1][x - 1].classList.add("show-number")
   );
-  numberPatterns[secondsTen].forEach((x) =>
+  numberPatterns[secondsTens].forEach((x) =>
     secondsLines[0][x - 1].classList.add("show-number")
   );
-  numberPatterns[secondsOne].forEach((x) =>
+  numberPatterns[secondsOnes].forEach((x) =>
     secondsLines[1][x - 1].classList.add("show-number")
   );
 
